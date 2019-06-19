@@ -40,7 +40,7 @@ form = """
        
          <label for="text">
             
-            <textarea>{0} </textarea>
+            <textarea name="text">{0} </textarea>
             
         <br>
         
@@ -57,13 +57,13 @@ form = """
 """
 
 @app.route("/", methods=['POST'])
-def encrypt(text,rot):
+def encrypt():
     text = request.form["text"]
     rot = request.form["rot"]
     rot = int(rot)
     encrypted = rotate_string(text,rot)
 
-    return str("<h1>") + form.format(encrypted) + str("</h1>")
+    return "<h1>" + form.format(encrypted) + "</h1>"
 
 
 @app.route("/")
